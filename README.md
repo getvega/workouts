@@ -13,6 +13,7 @@ A minimalist, mobile-first workout timer for custom strength training sessions. 
 - **Progress Tracking**: Visual progress bars and set counters
 - **Session Persistence**: Save configurations to localStorage and share via URL
 - **Mobile-Optimized**: Responsive design with wake lock to prevent screen sleep
+- **PWA Support**: Install to home screen with standalone mode (no browser UI)
 - **Offline Ready**: Fully client-side application, no server required
 
 ## Quick Start
@@ -52,6 +53,7 @@ Modern browsers with support for:
 - Wake Lock API (mobile)
 - HTML5 Drag & Drop
 - Local Storage
+- Web App Manifest (PWA)
 
 ## Development
 
