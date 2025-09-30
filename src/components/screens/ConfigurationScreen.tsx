@@ -3,35 +3,22 @@ import { ExerciseList } from '../ui/ExerciseList';
 import { Button } from '../ui/Button';
 import { TIME_OPTIONS } from '../../types/workout';
 import { generateShareURL } from '../../utils/urlSharing';
+import { useWorkout } from '../../hooks/useWorkoutContext';
 
-interface ConfigurationScreenProps {
-  exercises: string[];
-  exerciseDuration: number;
-  restDuration: number;
-  onUpdateExercise: (index: number, value: string) => void;
-  onRemoveExercise: (index: number) => void;
-  onReorderExercises: (dragIndex: number, dropIndex: number) => void;
-  onSetExerciseDuration: (duration: number) => void;
-  onSetRestDuration: (duration: number) => void;
-  onStartWorkout: () => void;
-}
-
-export const ConfigurationScreen: React.FC<ConfigurationScreenProps> = ({
-  exercises,
-  exerciseDuration,
-  restDuration,
-  onUpdateExercise,
-  onRemoveExercise,
-  onReorderExercises,
-  onSetExerciseDuration,
-  onSetRestDuration,
-  onStartWorkout,
-}) => {
-  const validExercises = exercises.filter((e) => e.trim());
+export const ConfigurationScreen: React.FC = () => {
+  const { 
+    config, 
+    validExercises, 
+    updateExercise, 
+    removeExercise, 
+    reorderExercises, 
+    updateConfig, 
+    startWorkout 
+  } = useWorkout();
 
   const handleCopyShareLink = async () => {
     try {
-      const url = generateShareURL(exercises, exerciseDuration, restDuration);
+      const url = generateShareURL(config.exercises, config.exerciseDuration, config.restDuration);
       await navigator.clipboard.writeText(url);
     } catch (error) {
       console.warn('Failed to copy share link:', error);
@@ -47,10 +34,10 @@ export const ConfigurationScreen: React.FC<ConfigurationScreenProps> = ({
         <div className="mb-8">
           <h2 className="text-xl font-semibold mb-4">Exercises</h2>
           <ExerciseList
-            exercises={exercises}
-            onUpdateExercise={onUpdateExercise}
-            onRemoveExercise={onRemoveExercise}
-            onReorderExercises={onReorderExercises}
+            exercises={config.exercises}
+            onUpdateExercise={updateExercise}
+            onRemoveExercise={removeExercise}
+            onReorderExercises={reorderExercises}
           />
         </div>
 
@@ -61,8 +48,8 @@ export const ConfigurationScreen: React.FC<ConfigurationScreenProps> = ({
               Exercise Duration
             </label>
             <select
-              value={exerciseDuration}
-              onChange={(e) => onSetExerciseDuration(Number(e.target.value))}
+              value={config.exerciseDuration}
+              onChange={(e) => updateConfig({ exerciseDuration: Number(e.target.value) })}
               className="w-full bg-gray-800 text-white p-3 rounded-lg text-lg"
             >
               {TIME_OPTIONS.map((time) => (
@@ -78,8 +65,8 @@ export const ConfigurationScreen: React.FC<ConfigurationScreenProps> = ({
               Rest Duration
             </label>
             <select
-              value={restDuration}
-              onChange={(e) => onSetRestDuration(Number(e.target.value))}
+              value={config.restDuration}
+              onChange={(e) => updateConfig({ restDuration: Number(e.target.value) })}
               className="w-full bg-gray-800 text-white p-3 rounded-lg text-lg"
             >
               {TIME_OPTIONS.map((time) => (
@@ -93,7 +80,7 @@ export const ConfigurationScreen: React.FC<ConfigurationScreenProps> = ({
 
         {/* Start Button */}
         <Button
-          onClick={onStartWorkout}
+          onClick={startWorkout}
           disabled={validExercises.length === 0}
           className="w-full"
           size="lg"

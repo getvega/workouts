@@ -6,15 +6,15 @@ export interface WorkoutConfig {
   restDuration: number;
 }
 
-export interface WorkoutState {
-  screen: Screen;
+export interface WorkoutSession {
+  config: WorkoutConfig;
   currentExerciseIndex: number;
   currentSet: number;
-  timeRemaining: number;
-  isPaused: boolean;
+  currentSegmentIndex: number;
+  totalSegments: number;
   totalSets: number;
-  workoutStartTime: Date | null;
-  workoutEndTime: Date | null;
+  startTime: Date | null;
+  endTime: Date | null;
 }
 
 export interface TimerState {
