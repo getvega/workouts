@@ -1,73 +1,55 @@
-# React + TypeScript + Vite
+# Workouts
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimalist, mobile-first workout timer for custom strength training sessions. Create your exercise routine, set timers, and follow guided workout sessions with audio cues and visual feedback.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Custom Exercise Lists**: Add, remove, and reorder exercises with drag-and-drop
+- **Flexible Timing**: Configure exercise and rest durations (15s to 3 minutes)
+- **Visual Feedback**: High-contrast UI with orange exercise mode and dark rest mode
+- **Audio Cues**: Synthesized beeps for countdown warnings and set completion
+- **Progress Tracking**: Visual progress bars and set counters
+- **Session Persistence**: Save configurations to localStorage and share via URL
+- **Mobile-Optimized**: Responsive design with wake lock to prevent screen sleep
+- **Offline Ready**: Fully client-side application, no server required
 
-## React Compiler
+## Quick Start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# Install dependencies
+npm install
 
-## Expanding the ESLint configuration
+# Start development server
+npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build for production
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Configure**: Add exercises and set durations on the main screen
+2. **Start**: Begin your workout with the "Start Workout" button
+3. **Follow**: Exercise phases show orange background, rest phases show dark background
+4. **Complete**: Review your session summary and start a new workout
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Tech Stack
+
+- **React 19** with TypeScript
+- **Vite** for build tooling
+- **Tailwind CSS** for styling
+- **Web Audio API** for reliable sound synthesis
+- **HTML5 Drag & Drop API** for exercise reordering
+- **Wake Lock API** for screen management
+
+## Browser Support
+
+Modern browsers with support for:
+- Web Audio API
+- Wake Lock API (mobile)
+- HTML5 Drag & Drop
+- Local Storage
+
+## Development
+
+See [CLAUDE.md](CLAUDE.md) for development guidelines and [SPECIFICATIONS.md](SPECIFICATIONS.md) for detailed feature specifications.
