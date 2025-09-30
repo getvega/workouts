@@ -1,0 +1,16 @@
+{
+  "name": "Workouts",
+  "short_name": "Workouts",
+  "description": "A minimalist workout timer for custom strength training sessions",
+  "start_url": "/workouts/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/workouts/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
