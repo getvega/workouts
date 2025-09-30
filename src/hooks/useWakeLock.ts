@@ -7,11 +7,15 @@ export const useWakeLock = () => {
   const requestWakeLock = useCallback(async () => {
     try {
       // Check for the newer WakeLock API first
-      if ('WakeLock' in window && 'request' in (window as any).WakeLock) {
+      const windowWithWakeLock = window as typeof window & { 
+        WakeLock?: { request: (type: string, options: { signal: AbortSignal }) => Promise<void> } 
+      };
+      
+      if ('WakeLock' in window && windowWithWakeLock.WakeLock?.request) {
         const controller = new AbortController();
         const signal = controller.signal;
 
-        await (window as any).WakeLock.request('screen', { signal });
+        await windowWithWakeLock.WakeLock.request('screen', { signal });
         wakeLockControllerRef.current = controller;
 
         console.log('Wake Lock is active (WakeLock API)');

@@ -25,6 +25,7 @@ AI development guide for the project.
 - `npm run lint` - Run ESLint
 - `npm run lint:fix` - Run ESLint with auto-fix
 - `npm run format` - Format code with Prettier
+- `npm run deploy` - Deploy to GitHub Pages
 
 ## Architecture Guidelines
 
@@ -58,6 +59,7 @@ src/
 
 - Always run `npm run typecheck` after code changes
 - Always run `npm run lint` to check code quality
+- Always run `npm run build` before committing/deploying
 - Test UI changes with MCP Playwright browser testing before committing
 - Format code before commits: `npm run format`
 - Test audio features in real browser (not just dev server)

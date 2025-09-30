@@ -2,6 +2,8 @@
 
 A minimalist, mobile-first workout timer for custom strength training sessions. Create your exercise routine, set timers, and follow guided workout sessions with audio cues and visual feedback.
 
+**Live**: https://getvega.github.io/workouts/
+
 ## Features
 
 - **Custom Exercise Lists**: Add, remove, and reorder exercises with drag-and-drop
@@ -45,6 +47,7 @@ npm run build
 ## Browser Support
 
 Modern browsers with support for:
+
 - Web Audio API
 - Wake Lock API (mobile)
 - HTML5 Drag & Drop

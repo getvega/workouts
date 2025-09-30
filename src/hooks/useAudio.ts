@@ -5,8 +5,11 @@ export const useAudio = () => {
 
   const createAudioContext = useCallback(() => {
     if (!audioContextRef.current) {
-      audioContextRef.current = new (window.AudioContext ||
-        (window as any).webkitAudioContext)();
+      const AudioContextClass = window.AudioContext || 
+        (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+      if (AudioContextClass) {
+        audioContextRef.current = new AudioContextClass();
+      }
     }
     return audioContextRef.current;
   }, []);
@@ -15,6 +18,11 @@ export const useAudio = () => {
     (frequency = 800, duration = 200) => {
       try {
         const audioContext = createAudioContext();
+        if (!audioContext) {
+          console.warn('AudioContext not available');
+          return;
+        }
+        
         const oscillator = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
 

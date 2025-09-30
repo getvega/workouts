@@ -1,8 +1,7 @@
-import React from 'react';
 import { Pause, Play } from 'lucide-react';
+import React from 'react';
 import { CircularTimer } from '../ui/CircularTimer';
 import { ProgressBar } from '../ui/ProgressBar';
-import { Button } from '../ui/Button';
 
 interface RestScreenProps {
   currentSet: number;
@@ -62,10 +61,7 @@ export const RestScreen: React.FC<RestScreenProps> = ({
         </button>
 
         {/* End Workout */}
-        <button
-          onClick={onEndWorkout}
-          className="mt-4 text-white text-lg"
-        >
+        <button onClick={onEndWorkout} className="mt-4 text-white text-lg">
           End Workout
         </button>
       </div>

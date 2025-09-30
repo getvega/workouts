@@ -66,6 +66,7 @@ export const useWorkoutPersistence = ({
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Save to localStorage whenever config changes
