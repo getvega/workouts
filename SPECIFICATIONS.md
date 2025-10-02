@@ -2,11 +2,14 @@
 
 A minimalist, mobile-first, single-page web application for creating and running custom, timer-based strength training workouts. The application operates entirely client-side, with a focus on a high-contrast, readable UI, reliable audio cues, and configuration persistence via Local Storage and shareable URLs.
 
-## UI Theme & Core Design
+## UI/UX Design Principles
 
 - **Default Theme:** A dark mode theme using a black background (#000000) with high-contrast white text.
 - **Active State Theme:** During an active exercise interval, the entire screen background transitions to a vibrant orange. All text and UI elements become white to ensure maximum readability.
 - **Design Philosophy:** The design is minimalist with a clear visual hierarchy. Fonts are large and bold, intended to be easily legible from a distance.
+- **Cohesiveness**: Components look identical everywhere; differentiation comes from screen context (background color), not component variants
+- **Structural Symmetry**: Parallel layouts across screens for predictable UX (Heading → Timer → Info → Controls)
+- **Elegant Motion**: Subtle transitions guide attention; screens fade in (0.4s), important elements scale in (95%→100%, 0.4s), buttons respond to interaction (hover/active scale)
 
 ## Screen 1: Session Configuration
 
@@ -31,7 +34,7 @@ This section covers the two alternating states during a workout set.
   - **Primary Element:** A huge countdown timer.
   - **Secondary Element:** The name of the current exercise.
 - **Components:**
-  - **Main Timer:** Implemented as a large, animated circular doughnut chart (using Chart.js) with the digital countdown timer overlaid in the center.
+  - **Main Timer:** Implemented as a large, animated circular doughnut chart with the digital countdown timer overlaid in the center. All workout screen timers are visually identical (250px, unified styling).
   - **Current Exercise:** Displayed in a very large font.
   - **Set Progress Bar:** A thin, horizontal bar at the top of the screen indicating progress through the current set of exercises.
   - **Controls:** A "Pause/Resume" button.
@@ -43,7 +46,7 @@ This section covers the two alternating states during a workout set.
   - **Primary Element:** The rest countdown timer.
   - **Secondary Element:** The name of the upcoming exercise.
 - **Components:**
-  - **Main Timer:** Same visual implementation as the exercise timer, but with different colors to match the dark theme.
+  - **Main Timer:** Identical visual implementation (250px circular timer, 15% opacity background ring).
   - **Next Exercise:** Text displays "Up next: [Exercise Name]".
   - **Set Info:** The current set number (e.g., "Set 1") is displayed.
   - **Controls:** The same "Pause/Resume" button.
@@ -57,7 +60,7 @@ This screen provides a 30-second timed pause after a full set is completed.
 - **Logic:** If the user doesn't interact within 30 seconds, the next set begins automatically. After the final exercise of a set, the app transitions directly to this screen, skipping the standard rest interval.
 - **Components:**
   - **Congratulatory Message:** A congratulatory message (e.g., "Set 1 Complete!").
-  - **Main Timer:** A large digital countdown timer for the 30-second rest.
+  - **Main Timer:** Identical visual implementation (250px circular timer, 15% opacity background ring).
   - **Controls:** A single, large "End Workout" button.
 
 ## Screen 4: Workout Complete
@@ -69,6 +72,12 @@ A final summary screen.
   - **Summary:** A summary displaying the total number of sets completed.
   - **Total Elapsed Time:** The total elapsed time of the workout.
   - **Controls:** A "New Workout" button to return to the configuration screen.
+
+## Motion Design
+
+- **Screen transitions**: fade-in (0.4s ease-out)
+- **Content entrance**: scale-in for headings and timers (95%→100%, 0.4s ease-out)
+- **Button interactions**: scale on hover/press (0.2s transitions)
 
 ## Audio & Technical Requirements
 

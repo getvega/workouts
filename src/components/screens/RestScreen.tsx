@@ -53,30 +53,32 @@ export const RestScreen: React.FC = () => {
     return ((config.restDuration - timer.timeRemaining) / config.restDuration) * 100;
   };
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
+    <div className="min-h-screen bg-black text-white flex flex-col animate-fade-in">
       {/* Progress Bar */}
       <ProgressBar progress={setProgress} className="bg-gray-800" />
 
       <div className="flex-1 flex flex-col items-center justify-center p-8">
-        {/* Current Set */}
-        <h2 className="text-2xl font-semibold mb-4">Set {session?.currentSet}</h2>
+        {/* Rest Heading */}
+        <h1 className="text-4xl md:text-6xl font-bold text-center mb-8 animate-scale-in">
+          Rest
+        </h1>
 
         {/* Timer */}
-        <div className="mb-8">
+        <div className="mb-8 animate-scale-in">
           <CircularTimer
             time={timer.timeRemaining}
             progress={getCircleProgress()}
-            size={200}
-            isExercise={false}
+            size={250}
           />
         </div>
 
-        {/* Next Exercise */}
+        {/* Next Exercise Info */}
         <div className="text-center mb-8">
-          <p className="text-xl text-gray-400 mb-2">Up next:</p>
-          <h1 className="text-3xl md:text-5xl font-bold">
+          <p className="text-lg text-gray-400 mb-1">Set {session?.currentSet}</p>
+          <p className="text-lg text-gray-400 mb-2">Up next:</p>
+          <h2 className="text-2xl md:text-3xl font-bold">
             {nextExercise || 'Set Complete!'}
-          </h1>
+          </h2>
         </div>
 
         {/* Pause/Resume Button */}

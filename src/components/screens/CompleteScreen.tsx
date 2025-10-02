@@ -12,12 +12,12 @@ export const CompleteScreen: React.FC<CompleteScreenProps> = ({
 }) => {
   const { session, resetWorkout } = useWorkout();
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8">
-      <h1 className="text-4xl md:text-6xl font-bold text-center mb-8">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8 animate-fade-in">
+      <h1 className="text-4xl md:text-6xl font-bold text-center mb-8 animate-scale-in">
         Great Job!
       </h1>
 
-      <div className="text-center space-y-4">
+      <div className="text-center space-y-4 animate-scale-in">
         <p className="text-2xl">
           You completed{' '}
           <span className="font-bold text-orange-500">{session?.totalSets}</span> set

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import type { WorkoutConfig } from '../types/workout';
 import { parseURLParams } from '../utils/urlSharing';
 
@@ -19,6 +19,9 @@ export const useWorkoutPersistence = ({
   setExerciseDuration,
   setRestDuration,
 }: UseWorkoutPersistenceProps) => {
+  // Track if this is the initial mount to prevent saving defaults before loading
+  const isInitialMount = useRef(true);
+
   // Load from localStorage and URL on mount
   useEffect(() => {
     // First try to load from URL
@@ -69,8 +72,14 @@ export const useWorkoutPersistence = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Save to localStorage whenever config changes
+  // Save to localStorage whenever config changes (skip first run after load)
   useEffect(() => {
+    // Skip the first time this effect runs (after loading from storage)
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
     const config: WorkoutConfig = {
       exercises,
       exerciseDuration,

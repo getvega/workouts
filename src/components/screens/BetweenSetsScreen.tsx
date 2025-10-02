@@ -40,20 +40,19 @@ export const BetweenSetsScreen: React.FC = () => {
     return ((30 - timer.timeRemaining) / 30) * 100;
   };
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8 animate-fade-in">
       {/* Congratulations */}
-      <h1 className="text-3xl md:text-5xl font-bold text-center mb-4">
+      <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 animate-scale-in">
         Set {session?.currentSet} Complete!
       </h1>
       <p className="text-xl text-gray-400 mb-8 text-center">Great job!</p>
 
       {/* Timer */}
-      <div className="mb-8">
+      <div className="mb-8 animate-scale-in">
         <CircularTimer
           time={timer.timeRemaining}
           progress={getCircleProgress()}
-          size={180}
-          isExercise={false}
+          size={250}
         />
       </div>
 

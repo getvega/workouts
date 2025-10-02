@@ -4,14 +4,12 @@ interface CircularTimerProps {
   time: number;
   progress: number;
   size?: number;
-  isExercise?: boolean;
 }
 
 export const CircularTimer: React.FC<CircularTimerProps> = ({
   time,
   progress,
   size = 200,
-  isExercise = false,
 }) => {
   const radius = size / 2 - 10;
   const circumference = 2 * Math.PI * radius;
@@ -27,7 +25,7 @@ export const CircularTimer: React.FC<CircularTimerProps> = ({
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke={isExercise ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.1)'}
+          stroke="rgba(255,255,255,0.15)"
           strokeWidth="8"
           fill="none"
         />

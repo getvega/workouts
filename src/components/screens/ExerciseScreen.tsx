@@ -59,23 +59,22 @@ export const ExerciseScreen: React.FC = () => {
     return ((config.exerciseDuration - timer.timeRemaining) / config.exerciseDuration) * 100;
   };
   return (
-    <div className="min-h-screen bg-orange-500 text-white flex flex-col">
+    <div className="min-h-screen bg-orange-500 text-white flex flex-col animate-fade-in">
       {/* Progress Bar */}
       <ProgressBar progress={setProgress} />
 
       <div className="flex-1 flex flex-col items-center justify-center p-8">
         {/* Current Exercise */}
-        <h1 className="text-4xl md:text-6xl font-bold text-center mb-8">
+        <h1 className="text-4xl md:text-6xl font-bold text-center mb-8 animate-scale-in">
           {currentExercise}
         </h1>
 
         {/* Timer */}
-        <div className="mb-8">
+        <div className="mb-8 animate-scale-in">
           <CircularTimer
             time={timer.timeRemaining}
             progress={getCircleProgress()}
             size={250}
-            isExercise={true}
           />
         </div>
 

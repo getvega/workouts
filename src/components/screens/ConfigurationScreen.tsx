@@ -26,7 +26,7 @@ export const ConfigurationScreen: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white p-4">
+    <div className="min-h-screen bg-black text-white p-4 animate-fade-in">
       <div className="max-w-md mx-auto">
         <h1 className="text-3xl font-bold mb-8 text-center">Workout Timer</h1>
 
